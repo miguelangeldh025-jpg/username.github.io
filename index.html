@@ -5,362 +5,193 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>POO en Java - Web Educativa</title>
 
-  <!-- Fuente moderna y amigable -->
+  <!-- Fuente moderna -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     /* Reset básico */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #a6f1e7, #3a8dff);
       color: #222;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
     }
     header {
-      background: #25274d;
-      color: #f7f1e3;
-      padding: 1.5rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 0 12px #1d1f2a;
-      font-weight: 700;
-      font-size: 1.8rem;
-      letter-spacing: 1.2px;
-      text-align: center;
-      text-transform: uppercase;
+      background: #25274d; color: #f7f1e3;
+      padding: 1.5rem 2rem; text-align: center;
+      font-weight: 700; font-size: 1.8rem;
       text-shadow: 0 0 8px #68d9a4;
-      user-select: none;
+      position: sticky; top: 0; z-index: 1000;
     }
     nav {
-      background: #2f3640;
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      padding: 1rem 0;
-      box-shadow: inset 0 -3px 7px #4cd137aa;
-      user-select: none;
+      background: #2f3640; display: flex;
+      justify-content: center; gap: 2.5rem;
+      padding: 1rem 0; box-shadow: inset 0 -3px 7px #4cd137aa;
     }
     nav a {
-      color: #dff9fb;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      letter-spacing: 0.9px;
-      font-size: 1.1rem;
+      color: #dff9fb; font-weight: 600;
+      text-decoration: none; padding: 0.5rem 1.2rem;
+      border-radius: 50px; transition: 0.3s;
     }
     nav a:hover, nav a.active {
-      background: #3ae374;
-      color: #222;
-      box-shadow: 0 0 16px #3ae374;
-      transform: scale(1.1);
+      background: #3ae374; color: #222;
+      box-shadow: 0 0 16px #3ae374; transform: scale(1.1);
     }
-    main {
-      flex-grow: 1;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      user-select: text;
-    }
+    main { flex-grow: 1; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
     section {
-      background: #ffffffcc;
-      margin-bottom: 3rem;
-      border-radius: 18px;
-      padding: 2rem 2.5rem;
+      background: #ffffffcc; margin-bottom: 3rem;
+      border-radius: 18px; padding: 2rem 2.5rem;
       box-shadow: 0 0 14px #68d9a4cc;
-      transition: background 0.3s ease;
     }
-    section:hover {
-      background: #d4f8e8cc;
-    }
+    section:hover { background: #d4f8e8cc; }
     h2 {
-      color: #00917c;
-      margin-bottom: 1.5rem;
-      font-weight: 800;
-      border-left: 8px solid #00b894;
-      padding-left: 1rem;
-      text-shadow: 0 0 8px #00b894cc;
-      font-size: 1.9rem;
+      color: #00917c; margin-bottom: 1.5rem;
+      border-left: 8px solid #00b894; padding-left: 1rem;
     }
-    h3 {
-      margin-top: 1.8rem;
-      margin-bottom: 0.8rem;
-      color: #077187;
-      font-weight: 700;
-      font-size: 1.3rem;
-    }
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #2c3e50;
-      margin-bottom: 1rem;
-    }
+    h3 { margin-top: 1.8rem; margin-bottom: 0.8rem; color: #077187; }
+    p { font-size: 1rem; line-height: 1.5; margin-bottom: 1rem; }
     pre {
-      background: #2d3436;
-      color: #dfe6e9;
-      padding: 1.2rem 1.5rem;
-      border-radius: 12px;
-      overflow-x: auto;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 0.95rem;
-      box-shadow: inset 0 0 8px #00b894cc;
-      margin-bottom: 1.5rem;
-      user-select: all;
+      background: #2d3436; color: #dfe6e9;
+      padding: 1.2rem 1.5rem; border-radius: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem; margin-bottom: 1.5rem;
     }
-    code {
-      font-weight: 700;
-      font-family: 'Courier New', Courier, monospace;
+    code { font-weight: 700; font-family: 'Courier New', monospace; }
+
+    /* --- Zona de práctica interactiva --- */
+    .practice {
+      margin-top: 1rem; padding: 1rem;
+      border: 2px dashed #00b894; border-radius: 12px;
+      background: #f0fff9;
     }
-    /* Diagrama texto simplificado */
-    .diagram {
-      background: #00b89422;
-      border-left: 5px solid #00b894cc;
-      padding: 0.8rem 1rem;
-      font-family: monospace;
-      white-space: pre-wrap;
-      margin-bottom: 1.5rem;
-      color: #05644b;
-      font-size: 0.9rem;
+    .practice h4 { margin-bottom: 0.5rem; color: #077187; }
+    .editor {
+      width: 100%; height: 100px; padding: 0.8rem;
+      font-family: monospace; border-radius: 8px;
+      border: 1px solid #aaa; resize: vertical;
     }
-    /* Botones estilo */
-    button, .btn {
-      background: #00b894;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      color: white;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 0 10px #00b894cc;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      margin-top: 0.5rem;
-      user-select: none;
+    .check-btn {
+      margin-top: 0.6rem; background: #00b894;
+      border: none; padding: 0.6rem 1.3rem;
+      color: white; border-radius: 50px; cursor: pointer;
+      font-weight: 600; transition: 0.3s;
     }
-    button:hover, .btn:hover {
-      background: #00917c;
-      box-shadow: 0 0 18px #00917ccc;
-    }
-    /* Responsive básico */
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      main {
-        margin: 1rem;
-        padding: 0 0.5rem;
-      }
-      h2 {
-        font-size: 1.6rem;
-      }
-    }
+    .check-btn:hover { background: #00917c; }
+    .feedback { margin-top: 0.5rem; font-weight: 600; }
+    .feedback.ok { color: #009432; }
+    .feedback.fail { color: #d63031; }
   </style>
 </head>
 <body>
   <header>POO en Java - Web Educativa</header>
   <nav>
     <a href="#control" class="active">Estructuras de Control</a>
-    <a href="#clases">Clases, Objetos y Métodos</a>
-    <a href="#conceptos">Pilares y Conceptos Avanzados</a>
+    <a href="#clases">Clases y Métodos</a>
+    <a href="#conceptos">Pilares Avanzados</a>
   </nav>
 
   <main>
-
     <!-- Sección 1 -->
-    <section id="control" tabindex="0">
+    <section id="control">
       <h2>Estructuras de Control</h2>
 
       <h3>Bucle while</h3>
-      <p><strong>Definición:</strong> El bucle <code>while</code> se usa para repetir un bloque de código mientras una condición sea verdadera.</p>
-      <p><strong>Sintaxis básica:</strong></p>
-      <pre><code>while(condición) {
-  // instrucciones
-}</code></pre>
-      <p><strong>Ejemplo:</strong> Contar del 1 al 10</p>
+      <p>El bucle <code>while</code> repite un bloque de código mientras la condición sea verdadera.</p>
       <pre><code>int i = 1;
 while(i <= 10) {
   System.out.println(i);
   i++;
 }</code></pre>
-      <div class="diagram">
-        Diagrama de flujo:  
-        Inicio → [Condición i ≤ 10] → Sí → Imprimir i → i++ → Volver a condición  
-                              ↓ No  
-                             Fin
+
+      <!-- Interactivo -->
+      <div class="practice">
+        <h4>✍️ Intenta escribir un código con <code>while</code>:</h4>
+        <textarea class="editor" placeholder="Escribe aquí tu versión..."></textarea>
+        <button class="check-btn" data-answer="while">Probar</button>
+        <p class="feedback"></p>
       </div>
 
-      <h3>Bucle do-while</h3>
-      <p><strong>Definición:</strong> Similar a <code>while</code>, pero garantiza que el bloque se ejecute al menos una vez.</p>
-      <p><strong>Sintaxis:</strong></p>
-      <pre><code>do {
-  // instrucciones
-} while(condición);</code></pre>
-      <p><strong>Ejemplo:</strong> Menú simple que repite hasta elegir salir</p>
-      <pre><code>int opcion;
-do {
-  System.out.println("1. Saludar");
-  System.out.println("2. Salir");
-  opcion = scanner.nextInt();
-} while(opcion != 2);</code></pre>
-
       <h3>Bucle for</h3>
-      <p><strong>Definición:</strong> Ideal para iteraciones con número conocido de repeticiones.</p>
-      <p><strong>Sintaxis:</strong></p>
-      <pre><code>for(inicialización; condición; incremento) {
-  // instrucciones
+      <p>El bucle <code>for</code> es ideal para repeticiones con número conocido.</p>
+      <pre><code>for(int i = 0; i < 5; i++) {
+  System.out.println(i);
 }</code></pre>
-      <p><strong>Ejemplo:</strong> Recorrer un arreglo e imprimir elementos</p>
-      <pre><code>int[] arr = {1,2,3,4};
-for(int i = 0; i < arr.length; i++) {
-  System.out.println(arr[i]);
-}</code></pre>
+
+      <div class="practice">
+        <h4>✍️ Escribe un bucle <code>for</code> que muestre números:</h4>
+        <textarea class="editor" placeholder="Tu código aquí..."></textarea>
+        <button class="check-btn" data-answer="for">Probar</button>
+        <p class="feedback"></p>
+      </div>
     </section>
 
     <!-- Sección 2 -->
-    <section id="clases" tabindex="0">
+    <section id="clases">
       <h2>Clases, Objetos y Métodos</h2>
 
-      <h3>Clases y Objetos</h3>
-      <p>Una <strong>clase</strong> es el molde que define atributos y comportamientos (métodos). Un <strong>objeto</strong> es una instancia concreta de esa clase.</p>
-      <p>Analogía: La clase es la "receta" y el objeto es la "galleta" hecha con esa receta.</p>
+      <h3>Clase simple</h3>
       <pre><code>public class Coche {
   String color;
-  String marca;
-  int velocidad;
-  
-  public void acelerar() {
-    velocidad += 10;
-  }
-}
-
-Coche miCoche = new Coche();
-miCoche.color = "Rojo";
-miCoche.acelerar();</code></pre>
-
-      <h3>Métodos</h3>
-      <p>Los métodos representan las acciones o comportamientos que puede hacer un objeto.</p>
-
-      <h4>Sobre carga de métodos (Overloading)</h4>
-      <p>Mismo nombre, diferentes parámetros para mayor flexibilidad.</p>
-      <pre><code>public class Calculadora {
-  int sumar(int a, int b) {
-    return a + b;
-  }
-  double sumar(double a, double b) {
-    return a + b;
-  }
+  void acelerar() { ... }
 }</code></pre>
 
-      <h3>Modificador static</h3>
-      <p>Se usa para atributos y métodos que pertenecen a la clase y no a un objeto específico.</p>
-      <pre><code>public class Contador {
-  static int cuenta = 0;
-  
-  public Contador() {
-    cuenta++;
-  }
-  
-  static int getCuenta() {
-    return cuenta;
-  }
-}</code></pre>
+      <div class="practice">
+        <h4>✍️ Declara tu propia <code>class</code>:</h4>
+        <textarea class="editor" placeholder="Crea tu clase aquí..."></textarea>
+        <button class="check-btn" data-answer="class">Probar</button>
+        <p class="feedback"></p>
+      </div>
 
-      <h3>Clases Locales</h3>
-      <p>Son clases definidas dentro de un método, usadas para tareas muy específicas y con alcance limitado.</p>
-      <pre><code>void metodo() {
-  class Local {
-    void mostrar() {
-      System.out.println("Clase local");
-    }
-  }
-  Local l = new Local();
-  l.mostrar();
-}</code></pre>
+      <h3>Static</h3>
+      <pre><code>static int contador = 0;</code></pre>
+
+      <div class="practice">
+        <h4>✍️ Usa la palabra clave <code>static</code> en un atributo:</h4>
+        <textarea class="editor"></textarea>
+        <button class="check-btn" data-answer="static">Probar</button>
+        <p class="feedback"></p>
+      </div>
     </section>
 
     <!-- Sección 3 -->
-    <section id="conceptos" tabindex="0">
+    <section id="conceptos">
       <h2>Pilares y Conceptos Avanzados</h2>
 
       <h3>Encapsulamiento</h3>
-      <p>Protección de los datos ocultándolos con modificadores <code>private</code> y usando métodos <code>get</code> y <code>set</code> para accederlos.</p>
-      <pre><code>public class Persona {
-  private String nombre;
+      <pre><code>private String nombre;
+public String getNombre() { ... }</code></pre>
 
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-}</code></pre>
-
-      <h3>Composición y Delegación</h3>
-      <p>La composición es cuando una clase incluye objetos de otras clases como atributos.</p>
-      <p>La delegación consiste en que un objeto “delegue” tareas a otro para no hacer todo él mismo.</p>
-      <pre><code>class Motor {
-  void arrancar() {
-    System.out.println("Motor arrancado");
-  }
-}
-
-class Coche {
-  Motor motor = new Motor();
-
-  void encender() {
-    motor.arrancar(); // delegación
-  }
-}</code></pre>
-
-      <h3>Clases Envoltorio (Wrapper)</h3>
-      <p>Son clases que envuelven tipos primitivos para tratarlos como objetos y usar métodos especiales.</p>
-      <pre><code>Integer numero = 10;
-Double decimal = 15.5;
-
-int n = numero.intValue();
-double d = decimal.doubleValue();</code></pre>
-
+      <div class="practice">
+        <h4>✍️ Escribe una variable <code>private</code>:</h4>
+        <textarea class="editor"></textarea>
+        <button class="check-btn" data-answer="private">Probar</button>
+        <p class="feedback"></p>
+      </div>
     </section>
-
   </main>
 
   <script>
-    // Para cambiar clase active en el nav al hacer scroll y click
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
+    // --- Script interactivo ---
+    const buttons = document.querySelectorAll('.check-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const practice = btn.closest('.practice');
+        const textarea = practice.querySelector('.editor');
+        const feedback = practice.querySelector('.feedback');
+        const keyword = btn.getAttribute('data-answer').toLowerCase();
+        const userCode = textarea.value.toLowerCase();
 
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 70;
-        if(pageYOffset >= sectionTop) {
-          current = section.getAttribute('id');
+        if (userCode.includes(keyword)) {
+          feedback.textContent = "✅ ¡Bien hecho! Has usado " + keyword;
+          feedback.className = "feedback ok";
+        } else {
+          feedback.textContent = "⚠️ Ups... intenta incluir '" + keyword + "'";
+          feedback.className = "feedback fail";
         }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    });
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        navLinks.forEach(l => l.classList.remove('active'));
-        e.target.classList.add('active');
       });
     });
   </script>
 </body>
 </html>
-
